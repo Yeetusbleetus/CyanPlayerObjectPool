@@ -174,6 +174,11 @@ namespace Cyan.PlayerObjectPool
         [PublicAPI]
         public GameObject _GetPlayerPooledObjectById(int playerId)
         {
+            if (!_enabledAndInitialized)
+            {
+                return null;
+            }
+            
             int index = _objectPool._GetPlayerPoolIndexById(playerId);
 
             if (index == -1)
